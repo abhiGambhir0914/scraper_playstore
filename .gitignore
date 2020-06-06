@@ -1,4 +1,7 @@
-/env
+/venv
 # /playstorescrapy/__pycache__
 /.vscode
 *__pycache__
+/playstorescrapy/output
+*.DS_Store
+*__pycache__/*.pyc
