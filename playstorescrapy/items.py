@@ -17,3 +17,4 @@ class PackagescrapyItem(scrapy.Item):
     package_name = scrapy.Field()
     ranking = scrapy.Field()
     playstore_ranking_country = scrapy.Field()
+    app_url = scrapy.Field()
