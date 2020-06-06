@@ -12,3 +12,8 @@ class PlaystorescrapyItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     pass
+
+class PackagescrapyItem(scrapy.Item):
+    package_name = scrapy.Field()
+    ranking = scrapy.Field()
+    playstore_ranking_country = scrapy.Field()
