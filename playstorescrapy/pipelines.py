@@ -9,3 +9,11 @@
 class PlaystorescrapyPipeline(object):
     def process_item(self, item, spider):
         return item
+
+# class testSpider(InitSpider):
+#     name = 'test'
+#     custom_settings = {
+#         'ITEM_PIPELINES': {
+#             'app.MyPipeline': 400
+#         }
+#     }
