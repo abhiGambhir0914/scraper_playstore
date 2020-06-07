@@ -109,7 +109,7 @@ class AppDetailScrapper(scrapy.Spider):
 
     except:
         print('*'*80, "PARSING ERROR")
-        raise CloseSpider('subdomain limit reached')
+        raise CloseSpider('PARSING ERROR')
 
 
 
