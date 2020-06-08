@@ -35,7 +35,7 @@ def selenium_parse(driver,country,page):
 if __name__ == "__main__":
     # data = parse(fetch_html())
     driver  = webdriver.Chrome(executable_path="/Users/abhigambhir/Desktop/chromedriver")
-    countries = ['in']
+    countries = ['in','us','au','at','be','br','ca','cz','dk','fi','fr','de','ir','it','jp','mx','nl','no','pl','pt','ru','sa','sk','kr','es','se','ch','tr','gb']
     for country in countries:
         for page in range(1,6):    
             selenium_parse(driver, country,page)

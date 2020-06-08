@@ -2,7 +2,7 @@ import scrapy
 import pandas as pd
 from ..items import PlaystorescrapyItem
 
-app_packages_data_df = pd.read_csv('top_app_package.csv')
+app_packages_data_df = pd.read_csv('final_all_countries_top_app_packages.csv')
 # # print(app_packages_data_df)
 
 class AppDetailScrapper(scrapy.Spider):
@@ -12,10 +12,10 @@ class AppDetailScrapper(scrapy.Spider):
 
     # allowed_domains = ['www.play.google.com/store/apps/details?id=nic.goi.aarogyasetu']
     start_urls = set(app_packages_data_df["app_url"].values)
-    # print(start_urls)
+    print("%"*50,len(start_urls))
 
     custom_settings = {
-        'FEED_URI': 'top_apps_details.csv',
+        'FEED_URI': 'final_top_apps_details.csv',
         'FEED_FORMAT': 'csv',
         'FEED_EXPORTERS': {
             'csv': 'scrapy.exporters.CsvItemExporter',
@@ -57,13 +57,13 @@ class AppDetailScrapper(scrapy.Spider):
             genre = response.xpath('//*[@itemprop="genre"]/text()').extract()
             price = response.xpath('//*[@itemprop="price"]/@content').extract_first()
 
-            try:
-                if int(price) == 0:
-                    price_type = 'Free'
-                elif int(price) > 0:
-                    price_type = 'Paid'
-            except:
-                print("Error Parsing Price_Type")
+            # try:
+            #     if int(price) == 0:
+            #         price_type = 'Free'
+            #     elif int(price) > 0:
+            #         price_type = 'Paid'
+            # except:
+            #     print("Error Parsing Price_Type")
 
             author = response.xpath('.//div[@class="jdjqLd"]/div[1]//span[1]/a/text()').extract_first()
             author_play_store_company_url = 'https://play.google.com' + str(section_app_header.xpath('.//div[@class="jdjqLd"]/div[1]//span[1]/a/@href').extract_first())
@@ -87,7 +87,7 @@ class AppDetailScrapper(scrapy.Spider):
             items['app_name'] = app_name
             items['genre'] = genre
             items['price'] = price
-            items['price_type'] = price_type
+            # items['price_type'] = price_type
             items['author'] = author
             items['author_play_store_company_url'] = author_play_store_company_url
             items['rating_value'] = rating_value
