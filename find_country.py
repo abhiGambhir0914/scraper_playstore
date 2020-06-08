@@ -8,7 +8,7 @@ tomtom_api_key = "WlKkYbkxFL8PzxkARuMqqHlyN8pZExNh" #can only request 2500 req a
 
 def tomtom_search(addr):
     url = api_url.format(encoded_addr=encode_url(addr,encoding="utf-8"),api_key=tomtom_api_key)
-    print(url)
+    #print(url)
     resp=requests.get(url)
     if resp.status_code==200:
         return filter_country(resp.json())
