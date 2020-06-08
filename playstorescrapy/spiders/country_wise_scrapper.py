@@ -3,19 +3,19 @@ import scrapy
 import os
 from ..items import PackagescrapyItem
 
-path = '../output/India'
-list_urls = ['file:///Users/abhigambhir/Desktop/Work/play_store_scrapy/playstorescrapy/output/India/' + f for f in
+path = '../output'
+list_urls = ['file:///Users/abhigambhir/Desktop/Work/play_store_scrapy/playstorescrapy/output/' + f for f in
              os.listdir(path) if f.endswith('.html')]
 
 class TrendDetailScrapper(scrapy.Spider):
     name = 'package_scrap'
 
-    # allowed_domains = []s
+    # allowed_domains = []
     start_urls = list_urls
     # start_urls = ['file:///Users/abhigambhir/Desktop/Work/play_store_scrapy/playstorescrapy/output/page_in_1.html']
 
     custom_settings = {
-        'FEED_URI': 'top_app_package.csv',
+        'FEED_URI': 'final_all_countries_top_app_packages.csv',
         'FEED_FORMAT': 'csv',
         'FEED_EXPORTERS': {
             'csv': 'scrapy.exporters.CsvItemExporter',
@@ -35,7 +35,7 @@ class TrendDetailScrapper(scrapy.Spider):
 
             package_name = apps.xpath('./td[contains(@class,"ranking-app-cell")]/a/@href').extract_first().split('/')[3]
             ranking = apps.xpath('./td[contains(@class, "ranking-rank")]/text()').extract_first()
-            playstore_ranking_country = response.request.url.split('/')[-2]
+            playstore_ranking_country = response.request.url.split('/')[-1].split('_')[1]
             app_url = str("https://play.google.com/store/apps/details?id="+str(package_name))
 
             items['package_name'] = package_name

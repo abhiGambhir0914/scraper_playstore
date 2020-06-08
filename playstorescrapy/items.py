@@ -15,7 +15,7 @@ class PlaystorescrapyItem(scrapy.Item):
     app_name = scrapy.Field()
     genre = scrapy.Field()
     price = scrapy.Field()
-    price_type = scrapy.Field()
+    # price_type = scrapy.Field()
     author = scrapy.Field()
     author_play_store_company_url = scrapy.Field()    
     rating_value = scrapy.Field()
