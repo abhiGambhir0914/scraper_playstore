@@ -19,7 +19,7 @@ def tomtom_search(addr):
 
 def filter_country(resp):
     try:
-        print(resp)
+        #print(resp)
         resp = resp['results'][0]['address']
         return {'state':resp['countrySubdivision'],
                 'city':resp['countrySecondarySubdivision'],
